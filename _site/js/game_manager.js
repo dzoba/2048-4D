@@ -1,8 +1,9 @@
-function GameManager(size, InputManager, Actuator, ScoreManager) {
+function GameManager(size, InputManager, Actuator, ScoreManager, ScoreData) {
   this.size         = size; // Size of the grid
   this.inputManager = new InputManager;
   this.scoreManager = new ScoreManager;
   this.actuator     = new Actuator;
+  this.scoreData    = new ScoreData;
 
   this.startTiles   = 2;
 
@@ -109,8 +110,13 @@ GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2:down, 3: left
   // x + 4: hyper-x
   var self = this;
+  self.scoreData.incrementMove();
 
-  if (this.isGameTerminated()) return; // Don't do anything if the game's over
+  if (this.isGameTerminated()) {
+    self.scoreData.recordScore();
+    return; // Don't do anything if the game's over
+  }
+
 
   var cell, tile;
 
@@ -139,8 +145,8 @@ GameManager.prototype.move = function (direction) {
               var newValue = tile.value * 2;
 
               if(!self.seen[newValue]){
+                self.scoreData.newNum(newValue);
                 self.seen[newValue] = true;
-                $('.time-to-tile').append("<li class='tile-time'>" + newValue + " - <strong>" + (Date.now() - self.startTime)/1000 + "</strong></li>");
               }
               var merged = new Tile(positions.next, newValue);
               merged.mergedFrom = [tile, next];

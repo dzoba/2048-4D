@@ -22,6 +22,10 @@ h1.title {
   display: block;
   float: left; }
 
+h2 {
+  margin-top: 0px;
+}
+
 @-webkit-keyframes move-up {
   0% {
     top: 25px;
@@ -50,7 +54,7 @@ h1.title {
     opacity: 0; } }
 
 .scores-container {
-  float: right;
+  float: left;
   text-align: right; }
 
 .score-container, .best-container {
@@ -119,7 +123,6 @@ hr {
   margin-bottom: 30px; }
 
 .container {
-  width: 500px;
   margin: 20px;
   float: left; }
 
@@ -145,7 +148,6 @@ hr {
     opacity: 1; } }
 
 .game-container {
-  margin-top: 40px;
   position: relative;
   padding: 15px;
   cursor: default;
