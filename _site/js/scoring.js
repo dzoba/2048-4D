@@ -18,4 +18,5 @@ ScoreData.prototype.newNum = function (newValue) {
   this.scoreObj[newValue] = {"moves": this.moves};
   this.scoreObj[newValue] = {"time": (Date.now() - this.startTime) / 1000};
   $('.time-to-tile').append("<li class='tile-time'>" + newValue + " - <strong>" + (Date.now() - this.startTime) / 1000 + "</strong></li>");
+  $('.moves-made').append("<li class='tile-moves'>" + newValue + " - <strong>" + this.moves + "</strong></li>");
 };
