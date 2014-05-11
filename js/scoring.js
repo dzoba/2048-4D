@@ -1,10 +1,10 @@
-function Score() {
+function ScoreData() {
   this.moves = 0;
   this.startTime = Date.now();
 
 }
 
-Score.prototype.incrementMove = function() {
+ScoreData.prototype.incrementMove = function() {
   this.moves++;
   console.log(moves);
 }
